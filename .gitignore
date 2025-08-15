@@ -1,26 +1,15 @@
-# Godot 4+ specific ignores
-.godot/
+# Ignore loose exported model/image files at root
+main0.bin
+main.gltf
+New Piskel.gif
+top-view-yellow-circle-white-background_23.png
 
-# Ignore binary/model/image files
-*.bin
-*.gltf
-*.gif
-*.png
-*.jpg
-*.jpeg
-*.webp
-*.tres
-*.import
-
-# Ignore temporary Godot/OS files
+# Ignore general temp and OS files
 *.tmp
 *.log
-*.db
-*.DS_Store
+.DS_Store
 Thumbs.db
 
-# Optional: ignore exports if not needed
-/export/
-
-# Ignore user-specific Godot editor settings
-*.godot/imported/*
+# Ignore user-specific Godot junk
+*.import/
+.import/
