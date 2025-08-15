@@ -1,8 +1,26 @@
 # Godot 4+ specific ignores
 .godot/
-.import/
-.export/
-.export-templates/
+
+# Ignore binary/model/image files
+*.bin
+*.gltf
+*.gif
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.tres
 *.import
+
+# Ignore temporary Godot/OS files
 *.tmp
 *.log
+*.db
+*.DS_Store
+Thumbs.db
+
+# Optional: ignore exports if not needed
+/export/
+
+# Ignore user-specific Godot editor settings
+*.godot/imported/*
