@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlnqflelm6ap3"]
+
+[ext_resource type="Script" uid="uid://7f56ocvsquoa" path="res://scripts/pheromone.gd" id="1_v1syq"]
+[ext_resource type="Texture2D" uid="uid://cll2imr4d5hor" path="res://assets/pheromone.webp" id="2_biwpc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_10neq"]
+radius = 22.5
+
+[node name="pheromone" type="Node2D"]
+script = ExtResource("1_v1syq")
+
+[node name="pheromone" type="Sprite2D" parent="."]
+scale = Vector2(0.04375, 0.0289062)
+texture = ExtResource("2_biwpc")
+
+[node name="Area2D" type="Area2D" parent="pheromone"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pheromone/Area2D"]
+position = Vector2(0, -3.8147e-06)
+scale = Vector2(3.415, 3.415)
+shape = SubResource("CircleShape2D_10neq")
+
+[connection signal="body_entered" from="pheromone/Area2D" to="." method="_on_area_2d_body_entered"]

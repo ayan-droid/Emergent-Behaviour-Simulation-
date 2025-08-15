@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4chmiljqsr21"]
+
+[ext_resource type="Script" uid="uid://dfcowbmrioqma" path="res://scripts/SimulationOver.gd" id="1_i13th"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pesql"]
+bg_color = Color(0.490196, 0.615686, 0.72549, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_ieks1"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_6rfey"]
+font_size = 40
+
+[node name="SimulationOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i13th")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -184.0
+offset_right = 248.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pesql")
+
+[node name="Simulation_Over" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Simulation Over"
+label_settings = SubResource("LabelSettings_ieks1")
+
+[node name="Time_Survived" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 184.0
+offset_right = 302.0
+offset_bottom = 239.0
+text = "Time survived: "
+label_settings = SubResource("LabelSettings_6rfey")

@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm6urpwhs0du6"]
+
+[ext_resource type="Script" uid="uid://b01si6c7mm2v8" path="res://scripts/foodGatherer.gd" id="1_cer4e"]
+[ext_resource type="Texture2D" uid="uid://d38k2gknpy6hu" path="res://assets/red.png" id="2_f86wu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjc4r"]
+radius = 3.28864
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27k8y"]
+radius = 59.0529
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3wfa"]
+radius = 6.0
+
+[node name="FoodGatherer" type="Node2D"]
+position = Vector2(0, 1)
+scale = Vector2(2, 2)
+metadata/_edit_horizontal_guides_ = [-17.0]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["foodgatherers"]]
+collision_mask = 12
+slide_on_ceiling = false
+script = ExtResource("1_cer4e")
+
+[node name="RandomMovementTimer" type="Timer" parent="CharacterBody2D"]
+process_callback = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+visibility_layer = 3
+scale = Vector2(0.0223633, 0.0223633)
+texture = ExtResource("2_f86wu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(1.82446, 1.86299)
+shape = SubResource("CircleShape2D_qjc4r")
+one_way_collision = true
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+shape = SubResource("CircleShape2D_27k8y")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="PheromoneSpawnTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.5
+autostart = true
+
+[node name="Forchecking" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Forchecking"]
+shape = SubResource("CircleShape2D_w3wfa")
+
+[node name="pheromoneFollowRandomTimer" type="Timer" parent="CharacterBody2D"]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D"]
+position = Vector2(5.36442e-07, -0.25)
+scale = Vector2(0.6, 0.625)
+
+[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="CharacterBody2D/VisibleOnScreenNotifier2D" to="CharacterBody2D" method="_on_visible_on_screen_notifier_2d_screen_exited"]

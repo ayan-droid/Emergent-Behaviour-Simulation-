@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16drcgbijiw2"]
+
+[ext_resource type="Texture2D" uid="uid://dnanvt241ljjw" path="res://assets/blue.svg" id="1_1bccq"]
+
+[sub_resource type="GDScript" id="GDScript_1mrs8"]
+script/source = "extends Node2D
+
+#https://forum.godotengine.org/t/how-do-i-make-a-custom-signal/4039
+signal foodate
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass 
+
+
+
+
+
+
+
+
+func _on_area_2d_body_entered(body):
+	emit_signal(\"foodate\")
+	print(\"Signal emitted\")
+	print(\"someboady ate me :skull: \")
+	queue_free()
+	
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_1mrs8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(505.25, 165)
+scale = Vector2(0.467214, 0.194444)
+texture = ExtResource("1_1bccq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

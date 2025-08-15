@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bin5d75gbqiwm"]
+
+[ext_resource type="Texture2D" uid="uid://c6d38jvurwwxl" path="res://assets/Green-Circle-PNG-Picture.png" id="1_syx0r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7f2er"]
+radius = 261.981
+
+[node name="ToFood" type="Node2D"]
+scale = Vector2(0.2, 0.2)
+
+[node name="ToFood" type="Sprite2D" parent="."]
+scale = Vector2(0.187075, 0.189076)
+texture = ExtResource("1_syx0r")
+
+[node name="Area2D" type="Area2D" parent="ToFood"]
+collision_layer = 8
+collision_mask = 8
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToFood/Area2D"]
+position = Vector2(-10.6909, -10.5778)
+shape = SubResource("CircleShape2D_7f2er")

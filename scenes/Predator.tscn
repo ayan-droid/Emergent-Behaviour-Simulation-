@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxtorik7n2qq5"]
+
+[ext_resource type="Script" uid="uid://ddk8dilt5mepf" path="res://scripts/Predator.gd" id="1_osd50"]
+[ext_resource type="Texture2D" uid="uid://q1elwokh44eg" path="res://assets/yellow_ball.png" id="2_yeln7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0sb8"]
+radius = 14.0
+height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1w6j"]
+radius = 152.0
+height = 304.0
+
+[node name="Predator" type="Node2D"]
+scale = Vector2(0.75, 0.75)
+
+[node name="Predator" type="CharacterBody2D" parent="."]
+disable_mode = 2
+collision_layer = 10
+collision_mask = 5
+script = ExtResource("1_osd50")
+
+[node name="Sprite2D" type="Sprite2D" parent="Predator"]
+position = Vector2(0, 1)
+scale = Vector2(0.04975, 0.0493056)
+texture = ExtResource("2_yeln7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Predator"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_b0sb8")
+
+[node name="Area2D" type="Area2D" parent="Predator"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Predator/Area2D"]
+shape = SubResource("CapsuleShape2D_f1w6j")
+
+[connection signal="body_entered" from="Predator/Area2D" to="Predator" method="_on_area_2d_body_entered"]

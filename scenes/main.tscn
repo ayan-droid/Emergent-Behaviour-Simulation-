@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhvkys65qy4ko"]
+
+[ext_resource type="Script" uid="uid://cwoowuiou1w7c" path="res://scripts/main.gd" id="1_wc1mj"]
+[ext_resource type="Script" uid="uid://vmsp4ktnd1a6" path="res://scripts/Civilisation_Hub.gd" id="2_1rp0x"]
+[ext_resource type="Texture2D" uid="uid://cll2imr4d5hor" path="res://assets/pheromone.webp" id="3_s38x0"]
+[ext_resource type="PackedScene" uid="uid://cx7g7kclok3xh" path="res://scenes/wall.tscn" id="4_bhylp"]
+[ext_resource type="PackedScene" uid="uid://b4chmiljqsr21" path="res://scenes/SimulationOver.tscn" id="5_wvak3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bubyk"]
+radius = 35.0
+height = 78.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_el1ab"]
+radius = 83.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5yrh"]
+radius = 39.0
+height = 78.0
+
+[sub_resource type="Theme" id="Theme_k548g"]
+
+[node name="mainScene" type="Node2D"]
+position = Vector2(3, 3)
+script = ExtResource("1_wc1mj")
+
+[node name="Civilisation_Hub" type="Node" parent="."]
+script = ExtResource("2_1rp0x")
+
+[node name="Area2D" type="Area2D" parent="Civilisation_Hub"]
+position = Vector2(604, 309)
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Civilisation_Hub/Area2D"]
+visibility_layer = 3
+position = Vector2(0, 3.05176e-05)
+scale = Vector2(0.460313, 0.495)
+texture = ExtResource("3_s38x0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Civilisation_Hub/Area2D"]
+shape = SubResource("CapsuleShape2D_bubyk")
+
+[node name="BringPeopleHome" type="Area2D" parent="Civilisation_Hub"]
+position = Vector2(604, 309)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Civilisation_Hub/BringPeopleHome"]
+shape = SubResource("CircleShape2D_el1ab")
+
+[node name="WhereFoodCantSpawn" type="Polygon2D" parent="Civilisation_Hub"]
+show_behind_parent = true
+visibility_layer = 2
+position = Vector2(268.3, 53.6)
+scale = Vector2(2.7, 2.65)
+color = Color(1, 1, 1, 0.631373)
+polygon = PackedVector2Array(2, -4, 121.957, -1, 237, -2, 239.083, 94.2356, 241, 196, 1, 191, 1.4667, 97.2431)
+
+[node name="PredatorSpawning" type="Timer" parent="Civilisation_Hub"]
+wait_time = 10.0
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Civilisation_Hub"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(604, 309)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Civilisation_Hub/StaticBody2D"]
+shape = SubResource("CapsuleShape2D_u5yrh")
+
+[node name="Agent_spawning" type="Timer" parent="Civilisation_Hub"]
+wait_time = 45.0
+autostart = true
+
+[node name="Wall 1" parent="." instance=ExtResource("4_bhylp")]
+position = Vector2(-101, -92)
+scale = Vector2(1, 3)
+
+[node name="Wall 2" parent="." instance=ExtResource("4_bhylp")]
+position = Vector2(1208, -109)
+scale = Vector2(1, 3)
+
+[node name="Wall 3" parent="." instance=ExtResource("4_bhylp")]
+position = Vector2(1072, -107)
+rotation = 1.5708
+scale = Vector2(1, 3)
+
+[node name="Wall 4" parent="." instance=ExtResource("4_bhylp")]
+position = Vector2(1097, 703)
+rotation = 1.5708
+scale = Vector2(1, 3)
+
+[node name="Label" type="Label" parent="."]
+top_level = true
+offset_left = 542.0
+offset_top = 238.0
+offset_right = 664.0
+offset_bottom = 261.0
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+top_level = true
+offset_left = 536.0
+offset_top = 207.0
+offset_right = 672.0
+offset_bottom = 234.0
+theme = SubResource("Theme_k548g")
+step = 1.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrentAmountOfFood" type="Label" parent="."]
+top_level = true
+offset_left = 550.0
+offset_top = 342.0
+offset_right = 617.0
+offset_bottom = 391.0
+text = "
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SimulationOver" parent="CanvasLayer" instance=ExtResource("5_wvak3")]
+visible = false
+offset_left = -21.0
+offset_top = -22.0
+offset_right = 25.0
+
+[connection signal="body_entered" from="Civilisation_Hub/Area2D" to="Civilisation_Hub" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Civilisation_Hub/BringPeopleHome" to="Civilisation_Hub" method="_on_bring_people_home_body_entered"]

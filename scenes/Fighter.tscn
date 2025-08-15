@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://86oyqhi6kndc"]
+
+[ext_resource type="Script" uid="uid://c20ec7v7j5fse" path="res://scripts/Fighter.gd" id="1_e1x6r"]
+[ext_resource type="Texture2D" uid="uid://cl1p7vu5o5idu" path="res://assets/brown_dot.png" id="2_tjtnw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jyh8l"]
+radius = 190.515
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_whco4"]
+radius = 2092.39
+
+[node name="Fighter" type="Node2D"]
+scale = Vector2(0.6, 0.6)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(0.1, 0.1)
+collision_layer = 16
+collision_mask = 12
+script = ExtResource("1_e1x6r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_jyh8l")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_tjtnw")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+shape = SubResource("CircleShape2D_whco4")
+
+[node name="RandomMovementTimer" type="Timer" parent="CharacterBody2D"]
+autostart = true
