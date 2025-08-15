@@ -61,7 +61,7 @@ The final outcome successfully met the objectives set out in the project specifi
 ---
 ## Contact
 For questions, feedback, or collaboration requests, please contact:  
-📧 your.email@example.com
+ayanmahmood.dev@outlook.com
 
 ---
 If you found this project interesting or useful, consider giving it a ⭐ on GitHub!
