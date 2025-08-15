@@ -45,7 +45,7 @@ Food Gatherers refine their travel routes over time, converging on **increasingl
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/your-repo-url.git](https://github.com/ayan-droid/Emergent-Behaviour-Simulation-.git)
+   git clone https://github.com/ayan-droid/Emergent-Behaviour-Simulation-.git
 2. Open the project in Godot 4.x.
 3. Run the main scene to start the simulation.
 
