@@ -9,8 +9,9 @@ It explores **emergent behaviour** in artificial life by simulating interactions
 
 The simulation consists of two main agent types:
 
-- **Food Gatherers** – seek out and collect resources.
-- **Fighters** – prioritise defence and combat threats.
+- **Food Gatherers** – Red - seek out and collect resources.
+- **Fighters** – Green - prioritise defence and combat threats.
+- **Predators** – Yellow - hunt and attack other agents.
 
 Agents operate without central control, following simple rule sets. Through repeated interactions, **emergent behaviours** appear that were not explicitly programmed.
 
@@ -29,19 +30,22 @@ In multiple runs, **Fighters** began positioning themselves along the travel pat
 - **Passive Protection Mechanism** – While Fighters pursued their own objectives, their presence reduced risk to nearby foragers.
 - **Increased Resource Security** – Escort behaviour correlated with higher food return rates and reduced forager losses.
 
+![Escort Dynamics](https://i.imgur.com/XySlyjQ.png)
+
 This emergent cooperation mirrors behaviours observed in **biological systems** (e.g., soldier ants protecting worker ants) and demonstrates the potential for **complex group strategies** to arise from simple local rules.
 
 ### 2. Optimal Path Formation (Secondary Behaviour)
 
-Over time, Food Gatherers began using **increasingly efficient paths** to reach resources, minimising travel distance and avoiding obstacles.  
-While this was a predictable outcome of the ruleset, it reinforces the simulation’s ability to generate realistic, adaptive behaviours.
+Food Gatherers refine their travel routes over time, converging on **increasingly efficient**, straighter paths to access resources. Earlier wide, curved green pheromone trails gradually straighten, showing the emergent optimisation of movement through repeated agent interactions.
+
+![Optimal Path Formation](https://i.imgur.com/wfW8CIm.png)
 
 ---
 ## Running the Project
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo-url.git
+   git clone [https://github.com/your-repo-url.git](https://github.com/ayan-droid/Emergent-Behaviour-Simulation-.git)
 2. Open the project in Godot 4.x.
 3. Run the main scene to start the simulation.
 
